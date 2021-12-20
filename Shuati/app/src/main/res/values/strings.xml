@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Shuati</string>
+    <string name="info">"No.%d AllNumber:%d Right Number:%d Wrong Number:%d "</string>
+</resources>
