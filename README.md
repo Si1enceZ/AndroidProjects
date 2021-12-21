@@ -3,15 +3,19 @@ My Android Learning
 
 ## BroadcastTest
 
-Testiting the  Broadcast
+Testiting the DIY `Broadcast`
 
-## BroadcastTest1
+## ContactsTest
 
-Testiting the DIY Broadcast
+Testing `Content Provider` and Request the permission to read the contacts
+
+## DatabaseTest
+
+`SQLite` demo and My `Content Provider`
 
 ## KotlinTest
 
-Kotlin language demo
+`Kotlin` language demo
 
 ## myapp 
 
@@ -19,7 +23,11 @@ Kotlin language demo
 
 ## NativeTest
 
-Native c++ Test
+`Native` c++ Test
+
+## ProviderTest
+
+Test get the from other application's  `Content Provider`  though `ContentResolver`
 
 ## Shuati
 
