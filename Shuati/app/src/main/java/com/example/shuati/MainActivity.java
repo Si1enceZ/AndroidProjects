@@ -22,6 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //TODO apk name
 
     private String[] problem=new String[]{};
     private String[] question = new String[]{};
@@ -41,23 +42,23 @@ public class MainActivity extends AppCompatActivity {
 
     public String loadFile(String fileName) throws IOException {
 
-        InputStream is = null;
-        String text=null;
+    InputStream is = null;
+    String text=null;
+    try {
+        is=this.getResources().getAssets().open(fileName);
+        byte[] bytes= new byte[is.available()];
+        is.read(bytes);
+        text=new String(bytes);
+    }catch (IOException e){
+        e.printStackTrace();
+        Log.e(TAG, "loadFile: load file failed" );
+    }finally {
         try {
-            is=this.getResources().getAssets().open(fileName);
-            byte[] bytes= new byte[is.available()];
-            is.read(bytes);
-            text=new String(bytes);
+            is.close();
         }catch (IOException e){
             e.printStackTrace();
-            Log.e(TAG, "loadFile: load file failed" );
-        }finally {
-            try {
-                is.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
         }
+    }
         Log.d(TAG, "loadFile: load file: "+fileName+" Successfully");
         return text;
 
