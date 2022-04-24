@@ -33,6 +33,6 @@ Test get the from other application's  `Content Provider`  though `ContentResolv
 
 My Shuati APK
 
-//TODO
+***TODO***
 
-* load file from local
+- [ ] load file from local
