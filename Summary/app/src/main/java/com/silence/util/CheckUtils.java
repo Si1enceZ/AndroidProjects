@@ -1,5 +1,6 @@
 package com.silence.util;
 
+import android.os.Build;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -45,6 +46,18 @@ public class CheckUtils {
             }
             return false;
         }
+
+    }
+
+    public static void  checkEmulator(){
+        int result=0;
+        if(!Build.PRODUCT.contains("sdk") && (!Build.PRODUCT.contains("Andy")) && (!Build.PRODUCT.contains("ttvm_Hdragon")) && (!Build.PRODUCT.contains("google_sdk")) && (!Build.PRODUCT.contains("Droid4X"))){
+            result += 1;
+        }
+        if((!Build.MANUFACTURER.equals("unknown")) && (!Build.MANUFACTURER.contains("Genymotion")) && (!Build.MANUFACTURER.contains("Andy")) && (!Build.MANUFACTURER.contains("nox")) ){
+            result += 1;
+        }
+        
 
     }
 }
