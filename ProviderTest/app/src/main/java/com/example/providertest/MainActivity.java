@@ -13,7 +13,7 @@ import android.widget.Button;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "MainActivity";
     private static final Uri targetUri = Uri.parse("content://com.example.databasetest.provider/book");
     private long newId;
@@ -22,14 +22,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button addData =(Button)findViewById(R.id.add_data);
-        Button queryData =(Button)findViewById(R.id.query_data);
-        Button updateData =(Button)findViewById(R.id.update_data);
-        Button deleteData =(Button)findViewById(R.id.delete_data);
+        Button addData = findViewById(R.id.add_data);
+        Button queryData = findViewById(R.id.query_data);
+        Button updateData = findViewById(R.id.update_data);
+        Button deleteData = findViewById(R.id.delete_data);
 
-        addData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        addData.setOnClickListener(this);
+        queryData.setOnClickListener(this);
+        updateData.setOnClickListener(this);
+        deleteData.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.add_data:
                 ContentValues values = new ContentValues();
                 Uri uri = Uri.parse("content://com.example.databasetest.provider/book");
                 values.put("name","A Clash of Kings");
@@ -41,12 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 //newId = newUri.getPathSegments().get(1);
                 newId= ContentUris.parseId(newUri);
                 Log.d(TAG, "add data: new Id "+newId);
-            }
-        });
-
-        queryData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.query_data:
                 Cursor cursor=null;
                 cursor = getContentResolver().query(targetUri,null,null,null,null);
                 if(cursor!=null){
@@ -63,28 +66,22 @@ public class MainActivity extends AppCompatActivity {
                     }
                     cursor.close();
                 }
-            }
-        });
+                break;
+            case R.id.delete_data:
+                uri = Uri.parse("content://com.example.databasetest.provider/book/"+newId);
+                int deleteRows = getContentResolver().delete(uri,null,null);
 
-        updateData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ContentValues values = new ContentValues();
-                Uri uri = Uri.parse("content://com.example.databasetest.provider/book/"+newId);
+                Log.d(TAG, "delete data : deleted rows: "+deleteRows);
+                break;
+            case R.id.update_data:
+                values = new ContentValues();
+                uri = Uri.parse("content://com.example.databasetest.provider/book/"+newId);
                 values.put("pages",1120);
                 int updateRows = getContentResolver().update(uri,values,"name = ?",new String[]{"A Clash of Kings"});
                 Log.d(TAG, "update data: update rows: "+updateRows);
-            }
-        });
-
-        deleteData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri uri = Uri.parse("content://com.example.databasetest.provider/book/"+newId);
-                    int deleteRows = getContentResolver().delete(uri,null,null);
-
-                Log.d(TAG, "delete data : deleted rows: "+deleteRows);
-            }
-        });
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Summary</string>
+    <string name="wifi_test">wifi test</string>
+    <string name="classloader_test">ClassLoader</string>
 </resources>

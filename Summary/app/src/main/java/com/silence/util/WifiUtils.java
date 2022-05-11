@@ -36,9 +36,22 @@ public class WifiUtils {
         targetActivity.registerReceiver(mReceiver,filter);
     }
 
-    public boolean scan(){
+    public boolean scanCheck(){
         boolean scanResult = wifiManager.startScan();
         Log.d(TAG, "scanResult: " + scanResult);
         return scanResult;
+    }
+
+    public void getWifiList(){
+        List<ScanResult> results = wifiManager.getScanResults();
+        Log.d(TAG, String.format("getWifiList: Found %s wifi\n",results.size()));
+        if (results.size()>0){
+            Log.d(TAG, "\t\t BSSID\t\t\tSSID");
+            for (ScanResult wifi:results){
+                //BSSID: MAC SSID: name of wifi
+                Log.d(TAG, wifi.BSSID+ "\t" + wifi.SSID);
+            }
+        }
+
     }
 }

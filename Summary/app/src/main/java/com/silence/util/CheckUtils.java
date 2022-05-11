@@ -50,6 +50,9 @@ public class CheckUtils {
     }
 
     public static void  checkEmulator(){
+        /*
+            通过模拟器与真机之前的特征区别来检查模拟器
+         */
         int result=0;
         if(!Build.PRODUCT.contains("sdk") && (!Build.PRODUCT.contains("Andy")) && (!Build.PRODUCT.contains("ttvm_Hdragon")) && (!Build.PRODUCT.contains("google_sdk")) && (!Build.PRODUCT.contains("Droid4X"))){
             result += 1;

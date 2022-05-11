@@ -13,11 +13,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -201,13 +201,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        infoText =(TextView)findViewById(R.id.infoText);
-        problemText = (TextView) findViewById(R.id.problemText);
-        answerText = (TextView) findViewById(R.id.answerText);
-        buttonA=(RadioButton)findViewById(R.id.button_A);
-        buttonB=(RadioButton)findViewById(R.id.button_B);
-        buttonC=(RadioButton)findViewById(R.id.button_C);
-        buttonD=(RadioButton)findViewById(R.id.button_D);
+        infoText = findViewById(R.id.infoText);
+        problemText =  findViewById(R.id.problemText);
+        answerText = findViewById(R.id.answerText);
+        buttonA= findViewById(R.id.button_A);
+        buttonB= findViewById(R.id.button_B);
+        buttonC= findViewById(R.id.button_C);
+        buttonD= findViewById(R.id.button_D);
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
 
